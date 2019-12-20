@@ -1,9 +1,10 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, Helvetica, sans-serif;
   background-color: #fafafa;
 }
+
 
 * {
   box-sizing: border-box;
@@ -12,8 +13,9 @@ html, body {
 
 form {
   display: block;
-  width: 480px;
-  margin: 40px auto 24px;
+  width: 100%;
+  margin: 12px auto 24px;
+  position: relative;
 }
 
 form:after {
@@ -25,22 +27,29 @@ form:after {
 }
 
 input {
-  height: 40px;
-  padding: 8px 20px;
+  height: 44px;
+  padding: 8px 20px 8px 40px;
   display: block;
   font-size: 16px;
   font-weight: 600;
-  width: calc(100% - 120px);
+  width: 100%;
   float: left;
-  border: 1px solid #2b2b2b;
   outline: none;
+  border: 2px solid #f5f5f5;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, .05);
+  transition: all 0.2s;
 }
 
 input:focus {
-  border-color: #000000;
+  border-color: #2b6cff;
 }
 
 button {
+  position: absolute;
+  left: -999999px;
+  top: -999999px;
   float: left;
   display: block;
   width: 120px;
@@ -51,7 +60,7 @@ button {
   text-transform: uppercase;
   cursor: pointer;
   color: #ffffff;
-  background-color: #2b2b2b;
+  background-color: var(--bg-color);
   border: none;
 }
 
@@ -62,14 +71,22 @@ button:hover {
 .city-list {
   display: block;
   margin: 0 auto;
-  width: 480px;
+  width: 100%;
 }
 
 .city-box {
   display: block;
-  border: 1px solid #444;
   margin-bottom: 20px;
   padding: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, .05);
+  border-radius: 4px;
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+.city-box:not(.location):hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, .10);
+  cursor: pointer;
 }
 
 .city-values:after {
@@ -100,4 +117,66 @@ h2 {
 
 .value {
   font-weight: 700;
+}
+
+.sidebar {
+  width: 400px;
+  padding: 20px;
+  height: 100%;
+  max-height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: #F6F6F6;
+}
+
+.map {
+  width: calc(100% - 400px);
+  height: 100%;
+  position: absolute;
+  left: 401px;
+  top: 0;
+}
+
+.empty-state {
+  text-align: center;
+  width: 274px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #646260;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 15px;
+  left: 16px;
+}
+
+.back-btn {
+  font-weight: 600;
+  color: #646260;
+  transition: all 0.2s;
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #000;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.active-city {
+  margin-bottom: 24px;
 }
