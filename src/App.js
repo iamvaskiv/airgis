@@ -97,16 +97,19 @@ function App() {
     const c = lookup.byCountry(country);
 
     if (c == undefined) {
-      alert(`Sorry "${country}" has no data.`);
+      alert(`Відсутні дані стосовно "${country}".`);
       return;
     }
 
     aq
     .latest({parameter: 'pm25', limit: '10000', country: c.iso2})
     .then((res) => {
-      // console.log(res);
-      setCities(prepareData(res.results));
+      if (res.results.length < 1) {
+        alert("Відстуні дані про цю країну!");
+        return;
+      }
 
+      setCities(prepareData(res.results));
       setAllCities(res.results);
     });
   }
